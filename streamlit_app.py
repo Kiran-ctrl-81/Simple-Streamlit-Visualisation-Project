@@ -22,22 +22,6 @@ def get_all_data():
     df_all['year'].fillna(2024,inplace=True)
     return df_all
 
-def plot_bars(df):
-    numeric_cols = df.select_dtypes(include='number').columns
-
-    fig, axes = plt.subplots(nrows=5, ncols=2, figsize=(12, 30))  # Adjust size as needed
-    fig.subplots_adjust(hspace=0.4)  # Adjust spacing between subplots
-
-    for i,col in enumerate(numeric_cols):
-        row = i//2
-        col_index = i%2
-
-        sns.barplot(data=df,x=df["Country name"],y=col,ax=axes[row, col_index],hue=df["Country name"], palette="deep")
-        axes[row, col_index].set_title(f'Bar Plot for {col}')
-
-        axes[row, col_index].set_xticklabels(df['Country name'], rotation=45)
-
-    return fig
 
 
 df = get_data()
